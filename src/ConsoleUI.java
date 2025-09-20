@@ -62,7 +62,7 @@ public class ConsoleUI {
                 return;
             }
             else{
-                System.out.println("Incorrect. Attempts: "+gameLogic.getNoOfAttempts()+" Remanining chances: "+gameLogic.getNoOfChances());
+                System.out.println("Incorrect. Attempts: "+gameLogic.getNoOfAttempts()+" Remaining chances: "+gameLogic.getNoOfChances());
             }
         }
     }
