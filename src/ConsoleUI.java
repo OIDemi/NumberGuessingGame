@@ -67,7 +67,7 @@ public class ConsoleUI {
     }
     public void end(){
         if(this.noOfChances > 0)
-            System.out.println("Congratulations! You guessed the correct number in 4 attempts.");
+            System.out.println("Congratulations! You guessed the correct number in "+this.noOfAttempts+" attempts.");
         else
             System.out.println("You lost");
 
