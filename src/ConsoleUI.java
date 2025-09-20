@@ -3,8 +3,6 @@ import java.util.Scanner;
 public class ConsoleUI {
     private final GameLogic gameLogic;
     private final Scanner scanner;
-    private int noOfAttempts;
-    private int noOfChances;
     public ConsoleUI(GameLogic gameLogic){
         this.gameLogic = gameLogic;
         this.scanner = new Scanner(System.in);
@@ -35,7 +33,7 @@ public class ConsoleUI {
                     isValidDifficulty = true;
                     break;
                 case "3":
-                    System.out.println("Hard");
+                    difficultyLevelChosen("Hard");
                     gameLogic.setNoOfChances(3);
                     isValidDifficulty = true;
                     break;
@@ -50,9 +48,8 @@ public class ConsoleUI {
     }
 
     public void guessNumber(){
-         this.noOfChances = gameLogic.getNoOfChances();
         int userGuess;
-        while(noOfChances > 0){
+        while(gameLogic.isGameOver()){
             System.out.print("Enter your guess: ");
             if(!scanner.hasNextInt()){
                 System.out.println("Invalid input");
@@ -61,18 +58,17 @@ public class ConsoleUI {
             }
             userGuess = scanner.nextInt();
             scanner.nextLine();
-            if(gameLogic.isNumberCorrect(userGuess)){
-                break;
-            }else{
-                System.out.println("Incorrect");
-                this.noOfAttempts++;
-                this.noOfChances--;
+            if(gameLogic.isGuessCorrect(userGuess)) {
+                return;
+            }
+            else{
+                System.out.println("Incorrect. Attempts: "+gameLogic.getNoOfAttempts()+" Remanining chances: "+gameLogic.getNoOfChances());
             }
         }
     }
     public void end(){
-        if(this.noOfChances > 0)
-            System.out.println("Congratulations! You guessed the correct number in "+this.noOfAttempts+" attempts.");
+        if(gameLogic.getNoOfChances() > 0)
+            System.out.println("Congratulations! You guessed the correct number in "+gameLogic.getNoOfAttempts()+" attempts.");
         else
             System.out.println("You lost");
 
