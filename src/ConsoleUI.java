@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class ConsoleUI {
-    private GameLogic gameLogic;
-    private Scanner scanner;
+    private final GameLogic gameLogic;
+    private final Scanner scanner;
     private int noOfAttempts;
     private int noOfChances;
     public ConsoleUI(GameLogic gameLogic){
@@ -51,9 +51,14 @@ public class ConsoleUI {
 
     public void guessNumber(){
          this.noOfChances = gameLogic.getNoOfChances();
-        int userGuess = 0;
+        int userGuess;
         while(noOfChances > 0){
             System.out.print("Enter your guess: ");
+            if(!scanner.hasNextInt()){
+                System.out.println("Invalid input");
+                scanner.nextLine();
+                continue;
+            }
             userGuess = scanner.nextInt();
             scanner.nextLine();
             if(gameLogic.isNumberCorrect(userGuess)){

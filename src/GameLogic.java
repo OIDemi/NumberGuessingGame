@@ -1,6 +1,6 @@
 public class GameLogic {
     private int noOfChances;
-    private RandomNumberGenerator randomNumberGenerator;
+    private final RandomNumberGenerator randomNumberGenerator;
     public GameLogic(RandomNumberGenerator randomNumberGenerator){
         this.randomNumberGenerator = randomNumberGenerator;
     }

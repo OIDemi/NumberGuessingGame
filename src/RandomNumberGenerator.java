@@ -1,8 +1,8 @@
 import java.util.Random;
 
 public class RandomNumberGenerator {
-    private Random random;
-    private int correctGeneratedNumber;
+    private final Random random;
+    private final int correctGeneratedNumber;
     public RandomNumberGenerator(Random random){
         this.random = random;
         correctGeneratedNumber = random.nextInt(1,101);
